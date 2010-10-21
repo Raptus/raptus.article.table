@@ -6,14 +6,18 @@ package is for you. It provides a generic way to create tables in articles.
 
 The following features for raptus.article are provided by this package:
 
-    * Provides a table content for raptus.article
-    * Components:
-        * raptus.article.table.right
-        * raptus.article.table.left
-        * raptus.article.table.full
+Content
+-------
+    * Provides a table content type for raptus.article
 
-Dependencies:
+Components
+----------
+    * raptus.article.table.right
+    * raptus.article.table.left
+    * raptus.article.table.full
 
+Dependencies
+------------
     * archetypes.schemaextender
     * raptus.article.core
 
@@ -72,7 +76,5 @@ in the article in which this component is active.
 Copyright and credits
 =====================
 
-raptus.article is copyrighted by raptus_, and licensed under the GPL. 
+raptus.article is copyrighted by `Raptus AG <http://raptus.com>`_ and licensed under the GPL. 
 See LICENSE.txt for details.
-
-.. _raptus: http://raptus.com/

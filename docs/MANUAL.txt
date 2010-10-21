@@ -10,19 +10,21 @@ Code overview
 
 Components
 ----------
-plone.abovecontentbody:
 
+plone.abovecontentbody
+``````````````````````
 - raptus.article.table.right
 - raptus.article.table.left
 
-plone.belowcontentbody:
-
+plone.belowcontentbody
+``````````````````````
 - raptus.article.table.full
 
 Interfaces
 ----------
-file: interfaces.py
 
+file: interfaces.py
+```````````````````
 - ITables (Provider for tables contained in an article)
     - getTables - method (Returns a list of tables (catalog brains))
 

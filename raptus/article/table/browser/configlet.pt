@@ -48,8 +48,10 @@
                                tal:attributes="value definition/name" /></td>
                       <td><input type="text" name="definitions.style:records" value=""
                                  tal:attributes="value definition/style" /></td>
-                      <td><textarea name="definitions.columns:records" value="" rows="5" cols="50"
-                                    tal:content="definition/columns" /></td>
+                      <td tal:define="id string:definition_columns_${definition/name};
+                                      columns definition/columns;">
+                        <table metal:use-macro="context/raptus_article_table_columns/macros/table" />
+                      </td>
                       <td><input type="checkbox" name="definitions.delete:records" value="1" /></td>
                     </tr>
                   </tbody>
@@ -74,13 +76,10 @@
                            for="new_definition.columns:record">
                         Columns
                     </label>
-                    <div class="formHelp"
-                         i18n:translate="description_columns">
-                        Define the columns of this table one column per line where a line is a ":" separated list of name, title, type and additional flags of the column. Available types are text, link and html. Available flags are icon and hidden.
-                    </div>
-                    <div class="widget">
-                        <textarea id="new_definition.columns:record" name="new_definition.columns:record" rows="5"
-                                  tal:content="request/new_definition/columns|nothing"></textarea>
+                    <div class="widget"
+                         tal:define="id string:new_definition_columns;
+                                     columns view/new_definition/columns;">
+                      <table metal:use-macro="context/raptus_article_table_columns/macros/table" />
                     </div>
                 </div>
                 

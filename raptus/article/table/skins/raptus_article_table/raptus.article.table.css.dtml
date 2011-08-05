@@ -92,4 +92,47 @@ table.table .add-row .icon {
   margin-right:0.5em;
 }
 
+table.table th.align-left,
+table.table td.align-left {
+  text-align:left;
+}
+
+table.table th.align-right,
+table.table td.align-right {
+  text-align:right;
+}
+
+table.table th.align-center,
+table.table td.align-center {
+  text-align:center;
+}
+
+table.table th.valign-top,
+table.table td.valign-top {
+  vertical-align:top;
+}
+
+table.table th.valign-middle,
+table.table td.valign-middle {
+  vertical-align:middle;
+}
+
+table.table th.valign-bottom,
+table.table td.valign-bottom {
+  vertical-align:bottom;
+}
+
+table.table-configlet th,
+table.table-configlet td,
+table.table-columns th,
+table.table-columns td {
+  padding-left:0.5em;
+  padding-right:0.5em;
+  text-align:left;
+}
+
+table.table-columns {
+  font-size:0.9em;
+}
+
 /* </dtml-with> */

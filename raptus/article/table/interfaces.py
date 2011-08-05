@@ -1,5 +1,7 @@
 from zope import interface
 
+from Products.Archetypes.interfaces import IField
+
 class ITables(interface.Interface):
     """ Provider for tables contained in an article
     """
@@ -60,14 +62,18 @@ class IType(interface.Interface):
         """ Whether the value has to be rendered as structure or not
         """
         
-    def modifier(value):
+    def modifier(value, obj, col):
         """ Returns the modified value
         """
         
-    def field(name, label):
-        """ Returns the ExtensionField to be used in the SchemaExtender
+    def fields(name, label):
+        """ Returns the list of ExtensionFields to be used in the SchemaExtender
         """
         
     def widget(name):
         """ Renders a simple widget to add data in a table cell
         """
+
+class ITableColumnsField(IField):
+    """Marker interface for table columns fields
+    """

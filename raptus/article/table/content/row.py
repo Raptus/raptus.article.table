@@ -59,7 +59,7 @@ class Extender(object):
         definition = IDefinition(table).getCurrentDefinition()
         fields = []
         for col in definition['columns']:
-            fields.append(col['utility'].field(col['name'], col['title']))
+            fields.extend(col['utility'].fields(col['name'], col['title']))
         return fields
 
 atapi.registerType(Row, PROJECTNAME)

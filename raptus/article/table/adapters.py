@@ -60,14 +60,6 @@ class Definitions(object):
         name = normalizeString(name, self.context)
         definition =  loads(self.properties.getProperty(name, dumps({'columns': [],
                                                                      'style': ''})))
-        columns = []
-        for col in definition['columns']:
-            try:
-                col['utility'] = component.getUtility(IType, col['type'])
-                columns.append(col)
-            except:
-                pass
-        definition['columns'] = columns
         return definition
     
     def getAvailableDefinitions(self):
@@ -99,7 +91,26 @@ class Definitions(object):
         name = normalizeString(name, self.context)
         if self.properties.hasProperty(name):
             self.properties._delProperty(name)
-        
+    
+    def parseColumns(self, columns):
+        ignore = 1
+        cols = []
+        for column in columns:
+            try:
+                # BBB
+                if not isinstance(column, dict):
+                    column = parseColumn(column)
+                column['ignore'] = ignore > 1
+                ignore = max(1, ignore-1)
+                if column.get('colspan', 0):
+                    ignore = int(column['colspan'])
+                utility = component.getUtility(IType, column['type'])
+                column['utility'] = utility
+                cols.append(column)
+            except:
+                pass
+        return cols
+    
 class Definition(object):
     """ Definition provider for tables
     """
@@ -113,19 +124,13 @@ class Definition(object):
         """ Returns the definition for this article
         """
         definition = {}
+        definitions = IDefinitions(self.context)
         if self.context.getDefinition():
-            definition = IDefinitions(self.context).getDefinition(self.context.getDefinition())
+            definition = definitions.getDefinition(self.context.getDefinition())
         columns = self.context.getColumns()
         if columns:
-            definition['columns'] = []
-            for col in columns:
-                try:
-                    column = parseColumn(col)
-                    utility = component.getUtility(IType, column['type'])
-                    column['utility'] = utility
-                    definition['columns'].append(column)
-                except:
-                    pass
+            definition['columns'] = columns
+        definition['columns'] = definitions.parseColumns(definition['columns'])
         style = self.context.getStyle()
         if style:
             definition['style'] = style

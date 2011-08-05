@@ -14,11 +14,18 @@ from raptus.article.core import interfaces
 from raptus.article.table.interfaces import IRows, IDefinition
 from raptus.article.table.config import ADD_PERMISSION
 
+try:
+    # Plone 4 and higher
+    import plone.app.upgrade
+    GIF = False
+except ImportError:
+    GIF = True
+
 class Table(BrowserView):
     """Renders the table of a table content type
     """
-
     template = ViewPageTemplateFile('table.pt')
+    gif = GIF
     
     def __call__(self):
         context = aq_inner(self.context)
@@ -27,16 +34,16 @@ class Table(BrowserView):
             typestool = getToolByName(context, 'portal_types')
             added, failed = 0, 0
             for row in self.request.form.get('%s.rows' % context.UID(), []):
-                try:
-                    title = row.get('title', 'row')
-                    id = self._create_id(title, context)
-                    typestool.constructContent(type_name='Row', container=context, id=id)
-                    object = context[id]
-                    object.update(**dict(row))
-                    object.reindexObject()
-                    added += 1
-                except:
-                    failed += 1
+                #try:
+                title = row.get('title', 'row')
+                id = self._create_id(title, context)
+                typestool.constructContent(type_name='Row', container=context, id=id)
+                object = context[id]
+                object.update(**dict(row))
+                object.reindexObject()
+                added += 1
+                #except:
+                #    failed += 1
             statusmessage = IStatusMessage(self.request)
             if added == 1:
                 statusmessage.addStatusMessage(_(u'Successfully added new row'), 'info')
@@ -113,6 +120,6 @@ class Table(BrowserView):
             if item['up'] or item['down'] or item['edit'] or item['delete']:
                 self.manageable = True
             for col in self.definition['columns']:
-                item[col['name']] = col['utility'].modifier(item['obj'].Schema()[col['name']].get(item['obj']))
+                item[col['name']] = col['utility'].modifier(item['obj'].Schema()[col['name']].get(item['obj']), item['obj'], col)
             i += 1
         return items

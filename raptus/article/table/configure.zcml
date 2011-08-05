@@ -62,6 +62,14 @@
     <utility
       factory=".types.HTMLType"
       name="html" />
+      
+    <utility
+      factory=".types.FileType"
+      name="file" />
+      
+    <utility
+      factory=".types.ImageType"
+      name="image" />
 
     <!-- File System Directory Views registration -->
     <cmf:registerDirectory

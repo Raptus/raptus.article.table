@@ -10,6 +10,8 @@ except ImportError:
 from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.content import base
 
+from raptus.article.table.field import TableColumnsField
+from raptus.article.table.widget import TableColumnsWidget
 from raptus.article.table.interfaces import ITable
 from raptus.article.table.config import PROJECTNAME, OVERRIDE_DEFINITION
 from raptus.article.core import RaptusArticleMessageFactory as _
@@ -36,12 +38,11 @@ TableSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 label=_(u'label_style', default=u'Table style')
             ),
         ),
-        atapi.LinesField('columns',
+        TableColumnsField('columns',
             storage = atapi.AnnotationStorage(),
             schemata = 'settings',
             write_permission = OVERRIDE_DEFINITION,
-            widget = atapi.LinesWidget(
-                description = _(u'description_columns', default=u'Define the columns of this table one column per line where a line is a ":" separated list of name, title, type and additional flags of the column. Available types are text, link and html. Available flags are icon and hidden.'),
+            widget = TableColumnsWidget(
                 label= _(u'label_columns', default=u'Columns'),
             )
         ),

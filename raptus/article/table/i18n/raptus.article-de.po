@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: raptus.article\n"
-"POT-Creation-Date: 2010-09-17 07:58+0000\n"
+"POT-Creation-Date: 2011-08-04 14:31+0000\n"
 "PO-Revision-Date: 2010-08-24 07:39+0000\n"
 "Last-Translator: Simon Käser <skaeser@raptus.com>\n"
 "Language-Team: German <skaeser@raptus.com>\n"
@@ -27,30 +27,83 @@ msgstr "Eine Tabellenzeile"
 msgid "A table"
 msgstr "Eine Tabelle"
 
+#. Default: "Add column"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:118
+msgid "Add column"
+msgstr "Spalte hinzufügen"
+
 #. Default: "Add new table definition"
-#: browser/configlet.pt:60
+#: browser/configlet.pt:62
 msgid "Add new table definition"
 msgstr "Neue Tabellendefinition hinzufügen"
 
-#: browser/table.py:48
+#: browser/table.py:55
 msgid "Adding ${number} rows failed"
 msgstr "Hinzufügen von ${number} Zeilen ist fehlgeschlagen"
 
-#: browser/table.py:46
+#: browser/table.py:53
 msgid "Adding one new row failed"
 msgstr "Hinzufügen einer neuen Zeile ist fehlgeschlagen"
 
+#. Default: "Cell class"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:47
+msgid "Cell class"
+msgstr "Zellenklasse"
+
+#. Default: "Colspan"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:41
+msgid "Colspan"
+msgstr "Colspan"
+
+#. Default: "File"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:77
+msgid "File"
+msgstr "Datei"
+
+#. Default: "HTML"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:75
+msgid "HTML"
+msgstr "HTML"
+
+#. Default: "Head class"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:44
+msgid "Head class"
+msgstr "Titelklasse"
+
+#. Default: "Hidden"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:38
+msgid "Hidden"
+msgstr "Versteckt"
+
+#. Default: "Icon"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:35
+msgid "Icon"
+msgstr "Icon"
+
+#. Default: "Image"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:79
+msgid "Image"
+msgstr "Bild"
+
+#. Default: "Link"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:73
+msgid "Link"
+msgstr "Link"
+
 #: browser/tables.py:23
 msgid "List of tables contained in the article on the left side."
-msgstr "Liste der im Artikel enthaltenen Tabellen dargestellt auf der linken Seite."
+msgstr ""
+"Liste der im Artikel enthaltenen Tabellen dargestellt auf der linken Seite."
 
 #: browser/tables.py:81
 msgid "List of tables contained in the article on the right side."
-msgstr "Liste der im Artikel enthaltenen Tabellen dargestellt auf der rechten Seite."
+msgstr ""
+"Liste der im Artikel enthaltenen Tabellen dargestellt auf der rechten Seite."
 
 #: browser/tables.py:106
 msgid "List of tables contained in the article over the whole width."
-msgstr "Liste der im Artikel enthaltenen Tabellen dargestellt über die gesamte "
+msgstr ""
+"Liste der im Artikel enthaltenen Tabellen dargestellt über die gesamte "
 "Breite."
 
 #. Default: "Manage table definitions"
@@ -58,16 +111,27 @@ msgstr "Liste der im Artikel enthaltenen Tabellen dargestellt über die gesamte 
 msgid "Manage table definitions"
 msgstr "Tabellendefinitionen verwalten"
 
+#. Default: "Name"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:26
+msgid "Name"
+msgstr ""
+
+#: validator.py:27
+msgid "Please select a table definition or type your own in this field."
+msgstr ""
+"Bitte wählen Sie eine Tabellendefinition oder definieren Sie Ihre eigene in "
+"diesem Feld."
+
 #. Default: "Row"
 #: profiles/default/types/Row.xml
 msgid "Row"
 msgstr "Zeile"
 
-#: browser/table.py:44
+#: browser/table.py:51
 msgid "Successfully added ${number} rows"
 msgstr "${number} Zeilen erfolgreich hinzugefügt"
 
-#: browser/table.py:42
+#: browser/table.py:49
 msgid "Successfully added new row"
 msgstr "Zeile erfolgreich hinzugefügt"
 
@@ -93,45 +157,53 @@ msgstr "Tabellen links"
 msgid "Tables right"
 msgstr "Tabellen rechts"
 
-#: browser/configlet.py:56
+#. Default: "Text"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:71
+msgid "Text"
+msgstr "Text"
+
+#. Default: "Title"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:29
+msgid "Title"
+msgstr "Titel"
+
+#. Default: "Type"
+#: skins/raptus_article_table/raptus_article_table_columns.pt:32
+msgid "Type"
+msgstr "Typ"
+
+#: browser/configlet.py:75
 msgid ""
 "Unable to parse the columns field of one of the definitions to be modified"
 msgstr ""
 "Beim Ändern einer der Tabellendefinitionen ist ein Fehler aufgetreten, "
 "überprüfen Sie das Format des Spalten-Felds."
 
-#: browser/configlet.py:44
+#: browser/configlet.py:64
 msgid "Unable to parse the columns field of the definition to be added"
 msgstr ""
 "Beim Hinzufügen der neuen Tabellendefinition ist ein Fehler aufgetreten, "
 "überprüfen Sie das Format des Spalten-Felds."
 
-#. Default: "Define the columns of this table one column per line where a line is a \":\" separated list of name, title, type and additional flags of the column. Available types are text, link and html. Available flags are icon and hidden."
-#: browser/configlet.pt:77
-msgid "description_columns"
-msgstr "Definieren Sie die Spalten der Tabelle, eine Spalte pro Zeile, wobei eine "
-"Zeile eine durch \":\" separierte Liste aus Name, Titel, Typ und zusätzlichen Parametern der Spalte ist. "
-"Zur Verfügung stehen die Typen text, link und html. Als zusätzliche Parameter stehen icon und hidden zur Verfügung."
-
 #. Default: "Select the components in which this table should be displayed."
-#: content/table.py:54
+#: content/table.py:55
 msgid "description_component_selection_table"
 msgstr ""
 "Wählen Sie die Komponenten aus in welchen diese Tabelle angezeigt werden "
 "soll."
 
 #. Default: "Select from predefined table definitions"
-#: content/table.py:25
+#: content/table.py:27
 msgid "description_definition"
 msgstr "Wählen Sie eine vordefinierte Tabellendefinition"
 
 #. Default: "Define the style of the table"
-#: browser/configlet.pt:92
+#: browser/configlet.pt:91
 msgid "description_style"
 msgstr "Definieren Sie den Stil der Tabelle"
 
 #. Default: "Add row"
-#: browser/table.pt:39
+#: browser/table.pt:53
 msgid "label_add_row"
 msgstr "Zeile hinzufügen"
 
@@ -141,12 +213,12 @@ msgid "label_columns"
 msgstr "Spalten"
 
 #. Default: "Component selection"
-#: content/table.py:55
+#: content/table.py:56
 msgid "label_component_selection"
 msgstr "Komponentenauswahl"
 
 #. Default: "Table definition"
-#: content/table.py:26
+#: content/table.py:28
 msgid "label_definition"
 msgstr "Tabellendefinition"
 
@@ -164,8 +236,3 @@ msgstr "Löschen"
 #: browser/configlet.pt:37
 msgid "label_style"
 msgstr "Stil"
-
-#: ./validator.pt:24
-msgid "Please select a table definition or type your own in this field."
-msgstr "Bitte wählen Sie eine Tabellendefinition oder definieren Sie Ihre eigene in diesem Feld."
-

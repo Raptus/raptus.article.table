@@ -22,7 +22,7 @@ class TableColumnsField(LinesField):
 
     security.declarePrivate('set')
     def set(self, instance, value, **kwargs):
-        value = [dumps(column.copy()) for column in value if column['name'] and not column['delete']]
+        value = [dumps(column.copy()) for column in value if column['name'].strip() and not column.get('delete', 0)]
         LinesField.set(self, instance, value, **kwargs)
 
     security.declarePrivate('get')

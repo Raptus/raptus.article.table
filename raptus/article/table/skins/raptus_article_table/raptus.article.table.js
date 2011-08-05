@@ -51,7 +51,7 @@
         .html('&#x28ff;');
       $(this).prepend(handle);
     });
-    $('.table-columns thead tr').prepend('<th />');
+    $('.table-columns thead tr').prepend('<th class="nosort" />');
     $('.table-columns tfoot tr td').attr('colspan', $('.table-columns tfoot tr td').attr('colspan')+1);
     $('input[name$="_add_column"][type="submit"]').click(function(e) {
       e.preventDefault();

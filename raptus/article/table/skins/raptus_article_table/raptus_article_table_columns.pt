@@ -114,7 +114,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="8">
+          <td colspan="9">
             <input type="submit" value="Add column" name="definition_id_add_column" class="standalone"
                    i18n:attributes="value"
                    tal:attributes="name string:${id}_add_column" />

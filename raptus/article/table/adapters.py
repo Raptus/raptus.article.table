@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import normalizeString
 
 from raptus.article.core.interfaces import IArticle
-from raptus.article.table.interfaces import ITable, ITables, IRows, IDefinitions, IDefinition, IType
+from raptus.article.table.interfaces import ITable, ITables, IRows, IDefinitions, IDefinition, IType, IStyles
 from raptus.article.table.utils import parseColumn
 
 class Tables(object):
@@ -76,6 +76,8 @@ class Definitions(object):
     def addDefinition(self, name, style, columns):
         """ Adds a new global definition
         """
+        for column in columns:
+            column['name'] = normalizeString(column['name'], self.context)
         value = dumps({'columns': columns,
                        'style': style,
                        'name': name})
@@ -135,3 +137,16 @@ class Definition(object):
         if style:
             definition['style'] = style
         return definition
+
+class Styles(object):
+    """ Style provider for tables
+    """
+    interface.implements(IStyles)
+    component.adapts(interface.Interface)
+    
+    def __init__(self, context):
+        self.context = context
+    
+    def styles(self):
+        properties = getToolByName(self.context, 'portal_properties').raptus_article
+        return [dict(zip(('value', 'title'), style.split(':'))) for style in properties.getProperty('table_styles', (':None', 'listing:Listing', 'plain:Plain',))]

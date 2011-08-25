@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: raptus.article\n"
-"POT-Creation-Date: 2011-08-04 14:31+0000\n"
+"POT-Creation-Date: 2011-08-24 13:48+0000\n"
 "PO-Revision-Date: 2010-01-11 14:03+0000\n"
 "Last-Translator: Steve Beyeler <sbeyeler@raptus.com>\n"
 "Language-Team: French <sbeyeler@raptus.com>\n"
@@ -33,7 +33,7 @@ msgid "Add column"
 msgstr "Ajouter une colonne"
 
 #. Default: "Add new table definition"
-#: browser/configlet.pt:62
+#: browser/configlet.pt:76
 msgid "Add new table definition"
 msgstr "Ajouter une nouvelle définition de tableau"
 
@@ -159,6 +159,15 @@ msgstr "Tableaux à droite"
 msgid "Text"
 msgstr "Text"
 
+#. Default: "The column definition will only be stored after saving the whole configuration form."
+#: browser/configlet.pt:64
+msgid ""
+"The column definition will only be stored after saving the whole "
+"configuration form."
+msgstr ""
+"La définition de la colonne ne sera stocké après l'enregistrement du "
+"formulaire de configuration tout entière."
+
 #. Default: "Title"
 #: skins/raptus_article_table/raptus_article_table_columns.pt:29
 msgid "Title"
@@ -169,21 +178,26 @@ msgstr "Titre"
 msgid "Type"
 msgstr "Type"
 
-#: browser/configlet.py:75
+#: browser/configlet.py:76
 msgid ""
 "Unable to parse the columns field of one of the definitions to be modified"
 msgstr ""
 "Une erreur s'est produite lors de la modification d'une définition de "
 "tableau, veuillez contrôler la valeur saisie dans le champ colonnes."
 
-#: browser/configlet.py:64
+#: browser/configlet.py:65
 msgid "Unable to parse the columns field of the definition to be added"
 msgstr ""
 "Une erreur s'est produite lors de l'ajout d'une définition de "
 "tableauveuillez contrôler la valeur saisie dans le champ colonnes."
 
+#. Default: "Define the columns of the table. Ce sera surcharger les colonnes définies par la définition de tableaux si sélectionné."
+#: content/table.py:47
+msgid "description_columns_override"
+msgstr "Définissez les colonnes du tableau. "
+
 #. Default: "Select the components in which this table should be displayed."
-#: content/table.py:55
+#: content/table.py:57
 msgid "description_component_selection_table"
 msgstr "Sélectionnez les composants sensés afficher ce tableau."
 
@@ -193,12 +207,17 @@ msgid "description_definition"
 msgstr "Sélectionnez une définition de tableau prédéfinie"
 
 #. Default: "Define the style of the table"
-#: browser/configlet.pt:91
+#: browser/configlet.pt:105
 msgid "description_style"
 msgstr "Définissez les style du tableau"
 
+#. Default: "Define the style of the table. This will override the style defined by the table definition if one is selected."
+#: content/table.py:38
+msgid "description_style_override"
+msgstr "Définissez le style du tableau. Cela sera surcharger le style défini par la définition de tableaux si sélectionné."
+
 #. Default: "Add row"
-#: browser/table.pt:53
+#: browser/table.pt:54
 msgid "label_add_row"
 msgstr "Ajouter une ligne"
 
@@ -208,7 +227,7 @@ msgid "label_columns"
 msgstr "Colonnes"
 
 #. Default: "Component selection"
-#: content/table.py:56
+#: content/table.py:58
 msgid "label_component_selection"
 msgstr "Choix des composants"
 

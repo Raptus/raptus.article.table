@@ -1,6 +1,18 @@
 Changelog
 =========
 
+2.0b7 (2011-08-25)
+------------------
+
+* Added info message to column configuration popup and fixed bug where multiple 
+  save button appeared
+* Added string normalization for column name to prevent exceptions when using non ascii
+  characters
+* Replaced text field for defining the table style by a drop down fed by a property in
+  portal properties
+* Improved descriptions of style and columns field in table content type to illustrate
+  the override mechanism if a table definition is selected
+
 2.0b6 (2011-08-05)
 ------------------
 

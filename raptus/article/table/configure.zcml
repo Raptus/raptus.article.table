@@ -33,11 +33,14 @@
       
     <adapter
       factory=".adapters.Definition" />
-             
+      
+    <adapter
+      factory=".adapters.Styles" />
+      
     <adapter 
       factory=".index.Index"
       name="component" />
-             
+      
     <adapter 
       factory="raptus.article.core.componentselection.ComponentSelectionDefault"
       for=".interfaces.ITable"
@@ -46,6 +49,10 @@
     <utility
       factory=".vocabulary.TableDefinitionsVocabulary"
       name="raptus.article.table.definitions" />
+      
+    <utility
+      factory=".vocabulary.TableStylesVocabulary"
+      name="raptus.article.table.styles" />
       
     <subscriber
       provides="Products.Archetypes.interfaces.IObjectPostValidation"

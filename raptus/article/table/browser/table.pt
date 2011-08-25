@@ -1,8 +1,9 @@
-<div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:metal="http://xml.zope.org/namespaces/metal"
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-     class="table-wrapper">
+     tal:omit-tag="">
+<div class="table-wrapper">
   <form action="" method="POST"
         tal:omit-tag="not: view/can_add"
         tal:define="putils context/plone_utils;
@@ -24,7 +25,7 @@
             Title
           </th>
           </tal:col>
-          <th tal:condition="view/manageable|nothing"></th>
+          <th class="nosort" tal:condition="view/manageable|nothing"></th>
         </tr>
       </thead>
       <tbody>
@@ -59,3 +60,4 @@
     </table>
   </form>
 </div>
+</html>

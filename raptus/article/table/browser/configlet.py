@@ -9,7 +9,7 @@ from Products.CMFPlone import PloneMessageFactory as _p
 from Products.statusmessages.interfaces import IStatusMessage
 
 from raptus.article.core import RaptusArticleMessageFactory as _
-from raptus.article.table.interfaces import IDefinitions
+from raptus.article.table.interfaces import IDefinitions, IStyles
 from raptus.article.table.utils import parseColumn
 
 class Configlet(BrowserView):
@@ -20,6 +20,7 @@ class Configlet(BrowserView):
     def __call__(self):
         self.request.set('disable_border', True)
 
+        self.styles = IStyles(self.context).styles()
         self._definitions = IDefinitions(self.context)
 
         if self.request.form.has_key('raptus_article_table_save'):

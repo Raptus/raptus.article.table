@@ -3,6 +3,7 @@
 
 .tables-full {
   text-align:left;
+  clear:both;
 }
 
 .tables-left table.table,

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-04 14:31+0000\n"
+"POT-Creation-Date: 2011-08-24 13:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "Add column"
 msgstr ""
 
 #. Default: "Add new table definition"
-#: ./browser/configlet.pt:62
+#: ./browser/configlet.pt:76
 msgid "Add new table definition"
 msgstr ""
 
@@ -156,6 +156,11 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#. Default: "The column definition will only be stored after saving the whole configuration form."
+#: ./browser/configlet.pt:64
+msgid "The column definition will only be stored after saving the whole configuration form."
+msgstr ""
+
 #. Default: "Title"
 #: ./skins/raptus_article_table/raptus_article_table_columns.pt:29
 msgid "Title"
@@ -166,16 +171,21 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ./browser/configlet.py:75
+#: ./browser/configlet.py:76
 msgid "Unable to parse the columns field of one of the definitions to be modified"
 msgstr ""
 
-#: ./browser/configlet.py:64
+#: ./browser/configlet.py:65
 msgid "Unable to parse the columns field of the definition to be added"
 msgstr ""
 
+#. Default: "Define the columns of the table. This will override the columns defined by the table definition if one is selected."
+#: ./content/table.py:47
+msgid "description_columns_override"
+msgstr ""
+
 #. Default: "Select the components in which this table should be displayed."
-#: ./content/table.py:55
+#: ./content/table.py:57
 msgid "description_component_selection_table"
 msgstr ""
 
@@ -185,12 +195,17 @@ msgid "description_definition"
 msgstr ""
 
 #. Default: "Define the style of the table"
-#: ./browser/configlet.pt:91
+#: ./browser/configlet.pt:105
 msgid "description_style"
 msgstr ""
 
+#. Default: "Define the style of the table. This will override the style defined by the table definition if one is selected."
+#: ./content/table.py:38
+msgid "description_style_override"
+msgstr ""
+
 #. Default: "Add row"
-#: ./browser/table.pt:53
+#: ./browser/table.pt:54
 msgid "label_add_row"
 msgstr ""
 
@@ -200,7 +215,7 @@ msgid "label_columns"
 msgstr ""
 
 #. Default: "Component selection"
-#: ./content/table.py:56
+#: ./content/table.py:58
 msgid "label_component_selection"
 msgstr ""
 

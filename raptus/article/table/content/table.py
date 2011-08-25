@@ -29,12 +29,13 @@ TableSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             ),
         ),
         atapi.StringField('style',
+            vocabulary_factory = 'raptus.article.table.styles',
             languageIndependent=True,
             schemata = 'settings',
             write_permission = OVERRIDE_DEFINITION,
             storage = atapi.AnnotationStorage(),
-            widget = atapi.StringWidget(
-                description = _(u'description_style', default=u'Define the style of the table'),
+            widget = atapi.SelectionWidget(
+                description = _(u'description_style_override', default=u'Define the style of the table. This will override the style defined by the table definition if one is selected.'),
                 label=_(u'label_style', default=u'Table style')
             ),
         ),
@@ -43,6 +44,7 @@ TableSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             schemata = 'settings',
             write_permission = OVERRIDE_DEFINITION,
             widget = TableColumnsWidget(
+                description = _(u'description_columns_override', default=u'Define the columns of the table. This will override the columns defined by the table definition if one is selected.'),
                 label= _(u'label_columns', default=u'Columns'),
             )
         ),

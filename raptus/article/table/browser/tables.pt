@@ -1,8 +1,9 @@
-<div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:metal="http://xml.zope.org/namespaces/metal"
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-     class=""
+     tal:omit-tag="">
+<div class=""
      i18n:domain="raptus.article"
      tal:condition="view/tables"
      tal:attributes="class string:tables ${view/css_class}">
@@ -22,3 +23,4 @@
   </div>
   </tal:item>
 </div>
+</html>

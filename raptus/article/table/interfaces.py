@@ -77,3 +77,11 @@ class IType(interface.Interface):
 class ITableColumnsField(IField):
     """Marker interface for table columns fields
     """
+
+class IStyles(interface.Interface):
+    """ Styles provider for tables
+    """
+        
+    def styles():
+        """ Returns the available table styles
+        """

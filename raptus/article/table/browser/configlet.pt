@@ -46,11 +46,25 @@
                                tal:attributes="value definition/name" />
                         <input type="text" name="definitions.name:records" value=""
                                tal:attributes="value definition/name" /></td>
-                      <td><input type="text" name="definitions.style:records" value=""
-                                 tal:attributes="value definition/style" /></td>
+                      <td>
+                        <select name="definitions.style:records" size="1">
+                          <tal:option repeat="style view/styles">
+                          <option value="" 
+                                  i18n:translate=""
+                                  i18n:domain="plone"
+                                  tal:content="style/title"
+                                  tal:attributes="value style/value;
+                                                  selected python:definition.get('style', '') == style['value'] and 'selected' or ''" />
+                          </tal:option>
+                        </select>
+                      </td>
                       <td tal:define="id string:definition_columns_${definition/name};
                                       columns definition/columns;">
                         <table metal:use-macro="context/raptus_article_table_columns/macros/table" />
+                        <p class="discreet"
+                           i18n:translate="">
+                          The column definition will only be stored after saving the whole configuration form.
+                        </p>
                       </td>
                       <td><input type="checkbox" name="definitions.delete:records" value="1" /></td>
                     </tr>
@@ -93,8 +107,16 @@
                         Define the style of the table
                     </div>
                     <div class="widget">
-                        <input type="text" id="new_definition.style:record" name="new_definition.style:record"
-                               tal:attributes="value request/new_definition/style|nothing" />
+                        <select id="new_definition.style:record" name="new_definition.style:record" size="1">
+                          <tal:option repeat="style view/styles">
+                          <option value="" 
+                                  i18n:translate=""
+                                  i18n:domain="plone"
+                                  tal:content="style/title"
+                                  tal:attributes="value style/value;
+                                                  selected python:request.get('new_definition', {}).get('style', '') == style['value'] and 'selected' or ''" />
+                          </tal:option>
+                        </select>
                     </div>
                 </div>
             </fieldset>

@@ -34,16 +34,16 @@ class Table(BrowserView):
             typestool = getToolByName(context, 'portal_types')
             added, failed = 0, 0
             for row in self.request.form.get('%s.rows' % context.UID(), []):
-                #try:
-                title = row.get('title', 'row')
-                id = self._create_id(title, context)
-                typestool.constructContent(type_name='Row', container=context, id=id)
-                object = context[id]
-                object.update(**dict(row))
-                object.reindexObject()
-                added += 1
-                #except:
-                #    failed += 1
+                try:
+                    title = row.get('title', 'row')
+                    id = self._create_id(title, context)
+                    typestool.constructContent(type_name='Row', container=context, id=id)
+                    object = context[id]
+                    object.update(**dict(row))
+                    object.reindexObject()
+                    added += 1
+                except:
+                    failed += 1
             statusmessage = IStatusMessage(self.request)
             if added == 1:
                 statusmessage.addStatusMessage(_(u'Successfully added new row'), 'info')

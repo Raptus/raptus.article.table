@@ -6,19 +6,21 @@
     var counter = 1;
     var title = false;
     $('.table-configlet .table-columns').each(function() {
+      var cell = $(this).parent();
       var trigger = $('<a href="javascript://" rel="#columns_'+counter+'"><img src="++resource++table_icon.gif" /></a>');
       if(!title)
-        title = $(this).parent().closest('table').find('thead > tr > th:eq(2)').html();
+        title = cell.closest('table').find('thead > tr > th:eq(2)').html();
       var overlay = $('<div id="columns_'+(counter++)+'" class="overlay overlay-ajax" />');
       var content = $('<div><h2 class="documentFirstHeading">'+title+'</h2></div>');
-      var save = $(this).closest('form').find('input.context').clone();
+      var save = $(this).closest('form').find('input.context:last').clone();
       save.click(function(e) {
         e.preventDefault();
         e.stopImmediatePropagation();
         $(this).closest('td').find('a[rel]').data('overlay').close();
       });
-      $(this).parent().append(overlay).append(trigger);
+      cell.append(overlay).append(trigger);
       content.append($(this));
+      content.append(cell.find('p.discreet'));
       content.append(save);
       overlay.append(content.wrap('<div class="pb-ajax" />').parent()).hide();
       trigger.overlay({

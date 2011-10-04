@@ -136,4 +136,15 @@ table.table-columns {
   font-size:0.9em;
 }
 
+
+table.table-configlet input[readonly="readonly"] {
+  color:&dtml-discreetColor;;
+}
+
+#portal-column-content table.table-configlet input[readonly="readonly"]:focus {
+  border:&dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+
+
 /* </dtml-with> */

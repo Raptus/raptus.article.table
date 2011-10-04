@@ -5,6 +5,16 @@
     // Table configlet
     var counter = 1;
     var title = false;
+    
+    var onLoad = function(){
+      var overlay = this.getOverlay();
+      var container = overlay.find('div>div');
+      var maxheight = $(window).height() - parseInt(overlay.css('top')) * 2;
+      container.css('max-height', maxheight + 'px');
+      container.css('overflow', 'auto');
+      
+    }
+    
     $('.table-configlet .table-columns').each(function() {
       var cell = $(this).parent();
       var trigger = $('<a href="javascript://" rel="#columns_'+counter+'"><img src="++resource++table_icon.gif" /></a>');
@@ -25,7 +35,8 @@
       overlay.append(content.wrap('<div class="pb-ajax" />').parent()).hide();
       trigger.overlay({
         closeOnClick: false,
-        closeOnEsc: false
+        closeOnEsc: false,
+        onLoad: onLoad,
       });
     });
     

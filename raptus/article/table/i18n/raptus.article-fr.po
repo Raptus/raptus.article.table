@@ -250,3 +250,8 @@ msgstr "Supprimer"
 #: browser/configlet.pt:37
 msgid "label_style"
 msgstr "Style"
+
+msgid "already_in_use"
+msgstr "la définition du tableau est déjà en function"
+
+

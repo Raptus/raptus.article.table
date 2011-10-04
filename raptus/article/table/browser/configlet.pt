@@ -30,44 +30,62 @@
 
             <fieldset tal:condition="view/definitions">
                 <legend i18n:translate="">Manage table definitions</legend>
-                <table class="listing table-configlet">
+                <table class="listing nosort table-configlet">
                   <thead>
                     <tr>
-                      <th class="nosort" i18n:translate="label_name">Name</th>
-                      <th class="nosort" i18n:translate="label_style">Style</th>
-                      <th class="nosort" i18n:translate="label_columns">Columns</th>
-                      <th class="nosort" i18n:translate="label_remove">Remove</th>
+                      <th i18n:translate="label_name">Name</th>
+                      <th i18n:translate="label_style">Style</th>
+                      <th i18n:translate="label_columns">Columns</th>
+                      <th i18n:translate="label_remove">Remove</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr tal:repeat="definition view/definitions">
-                      <td>
-                        <input type="hidden" name="definitions.origname:records" value=""
-                               tal:attributes="value definition/name" />
-                        <input type="text" name="definitions.name:records" value=""
-                               tal:attributes="value definition/name" /></td>
-                      <td>
-                        <select name="definitions.style:records" size="1">
-                          <tal:option repeat="style view/styles">
-                          <option value="" 
-                                  i18n:translate=""
-                                  i18n:domain="plone"
-                                  tal:content="style/title"
-                                  tal:attributes="value style/value;
-                                                  selected python:definition.get('style', '') == style['value'] and 'selected' or ''" />
-                          </tal:option>
-                        </select>
-                      </td>
-                      <td tal:define="id string:definition_columns_${definition/name};
-                                      columns definition/columns;">
-                        <table metal:use-macro="context/raptus_article_table_columns/macros/table" />
-                        <p class="discreet"
-                           i18n:translate="">
-                          The column definition will only be stored after saving the whole configuration form.
-                        </p>
-                      </td>
-                      <td><input type="checkbox" name="definitions.delete:records" value="1" /></td>
-                    </tr>
+                    <tal:repeat tal:repeat="definition view/definitions">
+                      <tr tal:define="blocked definition/blocked;
+                                      readonly python:blocked and 'readonly' or '';
+                                      hasdelete python:True;
+                                      repeat_odd repeat/definition/odd;"
+                          tal:attributes="class python:repeat_odd and 'odd' or 'even'">
+                        <td>
+                          <input type="hidden" name="definitions.origname:records" value=""
+                                 tal:attributes="value definition/name" />
+                          <input type="text" name="definitions.name:records" value=""
+                                 tal:attributes="value definition/name;
+                                                 readonly readonly" /></td>
+                        <td>
+                          <select name="definitions.style:records" size="1">
+                            <tal:option repeat="style view/styles">
+                            <option value="" 
+                                    i18n:translate=""
+                                    i18n:domain="plone"
+                                    tal:content="style/title"
+                                    tal:attributes="value style/value;
+                                                    selected python:definition.get('style', '') == style['value'] and 'selected' or ''" />
+                            </tal:option>
+                          </select>
+                        </td>
+                        <td tal:define="id string:definition_columns_${definition/name};
+                                        columns definition/columns;">
+                          <table metal:use-macro="context/raptus_article_table_columns/macros/table" />
+                          <p class="discreet"
+                             i18n:translate="">
+                            The column definition will only be stored after saving the whole configuration form.
+                          </p>
+                        </td>
+                        <td><input type="checkbox"
+                                   name="definitions.delete:records"
+                                   value="1"
+                                   tal:condition="not: blocked" />
+                            <input type="hidden"
+                                   name="definitions.delete:records"
+                                   value="0"
+                                   tal:condition="blocked" />
+                            <span class="discreet"
+                                 i18n:translate="already_in_use"
+                                 tal:condition="blocked">This definition are already in use.</span>
+                       </td>
+                      </tr>
+                    </tal:repeat>
                   </tbody>
                 </table>
             </fieldset>

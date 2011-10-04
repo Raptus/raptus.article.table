@@ -255,3 +255,8 @@ msgstr "Löschen"
 #: browser/configlet.pt:37
 msgid "label_style"
 msgstr "Stil"
+
+msgid "already_in_use"
+msgstr "Diese Tabellendefinition wird bereits verwendet."
+
+

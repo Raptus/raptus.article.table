@@ -1,3 +1,4 @@
+import transaction
 from Acquisition import aq_inner
 
 from Products.Five.browser import BrowserView
@@ -9,7 +10,7 @@ from Products.CMFPlone import PloneMessageFactory as _p
 from Products.statusmessages.interfaces import IStatusMessage
 
 from raptus.article.core import RaptusArticleMessageFactory as _
-from raptus.article.table.interfaces import IDefinitions, IStyles
+from raptus.article.table.interfaces import IDefinitions, IStyles, ITable
 from raptus.article.table.utils import parseColumn
 
 class Configlet(BrowserView):
@@ -27,10 +28,11 @@ class Configlet(BrowserView):
             self.setProperties()
 
         self.definitions = []
-        raw_definitions = self._definitions.getAvailableDefinitions().values()
-        for definition in raw_definitions:
+        raw_definitions = self._definitions.getAvailableDefinitions()
+        for name, definition in raw_definitions.iteritems():
             if not len(definition['columns']) or self.request.form.has_key('definition_columns_%s_add_column' % definition['name']):
                 definition['columns'].append({})
+            definition['blocked'] =self.checkBlocked(name)
             self.definitions.append(definition)
         
         self.new_definition = {
@@ -62,6 +64,7 @@ class Configlet(BrowserView):
             try:
                 self._definitions.addDefinition(new['name'], new['style'], self._formatColumns(columns))
             except:
+                transaction.abort()
                 error = _(u'Unable to parse the columns field of the definition to be added')
         modify = self.request.form.get('definitions', [])[:]
         for definition in modify:
@@ -73,9 +76,24 @@ class Configlet(BrowserView):
                 columns = self.request.form.get('definition_columns_%s' % definition['origname'], [])
                 self._definitions.addDefinition(definition['name'], definition['style'], self._formatColumns(columns))
             except:
+                transaction.abort()
                 error = _(u'Unable to parse the columns field of one of the definitions to be modified')
         statusmessage = IStatusMessage(self.request)
         if error:
             statusmessage.addStatusMessage(error, 'error')
         else:
             statusmessage.addStatusMessage(_p(u'Changes saved.'), 'info')
+
+
+    def checkBlocked(self, definition):
+        """ check if a table has already this definition
+            and we ban the user to make some modifications.
+        """ 
+        catalog = getToolByName(self.context, 'portal_catalog')
+        for brain in catalog(object_provides=ITable.__identifier__):
+            if brain.getObject().getDefinition() == definition:
+                return True
+        return False
+
+
+

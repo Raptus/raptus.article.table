@@ -4,6 +4,7 @@ from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from Products.ZCatalog.ZCatalog import ZCatalog
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _p
 
@@ -88,12 +89,9 @@ class Configlet(BrowserView):
     def checkBlocked(self, definition):
         """ check if a table has already this definition
             and we ban the user to make some modifications.
-        """ 
+        """
         catalog = getToolByName(self.context, 'portal_catalog')
-        for brain in catalog(object_provides=ITable.__identifier__):
-            if brain.getObject().getDefinition() == definition:
-                return True
-        return False
+        return len(catalog.unrestrictedSearchResults(object_provides=ITable.__identifier__, getDefinition=definition)) > 0
 
 
 

@@ -1,14 +1,12 @@
 Changelog
 =========
 
-2.0b8 (2011-10-04)
+2.0b8 (2011-10-18)
 ------------------
 
-* block modifications on a table thats are already in use.
-* fixed odd/even columns
+* block modifications on a table definitions which are already in use.
+* fixed odd/even rows
 * add scrollbar to lightbox for large definitions.
-
-
 
 2.0b7 (2011-08-25)
 ------------------

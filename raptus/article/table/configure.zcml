@@ -21,6 +21,11 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+    <genericsetup:importStep
+      name="raptus.article.table.catalog"
+      title="raptus.article.table catalog setup"
+      description=""
+      handler="raptus.article.table.setuphandlers.setupCatalog" />
       
     <adapter
       factory=".adapters.Tables" />

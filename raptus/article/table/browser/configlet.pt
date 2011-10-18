@@ -82,7 +82,7 @@
                                    tal:condition="blocked" />
                             <span class="discreet"
                                  i18n:translate="already_in_use"
-                                 tal:condition="blocked">This definition are already in use.</span>
+                                 tal:condition="blocked">This definition is already in use.</span>
                        </td>
                       </tr>
                     </tal:repeat>

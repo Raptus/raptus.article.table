@@ -135,12 +135,9 @@
           event.preventDefault();
           var row = $(this).closest('tr');
           var table = row.closest('table');
-          if(row.parent('thead').size() > 0)
-            var position = 0;
-          else
-            var position = table.find('tr:not(.add-row)').index(row);
+          var top = row.parent('thead').size() > 0;
           table.find('.add-row').each(function() {
-            if(position > 0) {
+            if(!top) {
               $(this).data('current', true);
               var next = row;
               while(next.size() > 0) {
@@ -154,6 +151,7 @@
             } else
               $(this).insertBefore(table.find('tbody tr:not(.add-row)').get(0));
           });
+          var position = table.find('.add-row:has(.context)').index();
           var name = table.find('tr.add-row .context').attr('name').replace('add', 'position');
           if(table.find('input[name="'+name+'"]').size() > 0)
             table.find('input[name="'+name+'"]').val(position);

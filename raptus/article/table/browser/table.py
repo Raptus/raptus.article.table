@@ -47,6 +47,8 @@ class Table(BrowserView):
                     added += 1
                 except:
                     failed += 1
+            if position is not None and added > 0:
+                getToolByName(context, 'plone_utils').reindexOnReorder(context)
             statusmessage = IStatusMessage(self.request)
             if added == 1:
                 statusmessage.addStatusMessage(_(u'Successfully added new row'), 'info')
@@ -61,6 +63,8 @@ class Table(BrowserView):
     
     def _create_id(self, id, container):
         id = normalizeString(id, container)
+        if not id:
+            id = 'row'
         if self._check_id(id, container):
             return id
         new_id = id + '-%s'

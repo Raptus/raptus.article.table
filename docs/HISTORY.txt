@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0b10 (2011-11-21)
+-------------------
+
+* Fixed JavaScript error resulting in wrong insertion position under some circumstances
+* Added call to reindexOnReorder when inserting rows at a specific position
+
 2.0b9 (2011-11-21)
 ------------------
 

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0b9 (2011-11-21)
+------------------
+
+* Fixed KeyError if no columns are defined for a table
+* Added possibility to select the position where to add new columns
+
 2.0b8 (2011-10-18)
 ------------------
 

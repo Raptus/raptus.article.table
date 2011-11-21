@@ -31,6 +31,7 @@ class Table(BrowserView):
         context = aq_inner(self.context)
         if self.request.form.get('%s.row.add' % context.UID(), None) is not None and \
            self.can_add:
+            position = self.request.form.get('%s.row.position' % context.UID(), None)
             typestool = getToolByName(context, 'portal_types')
             added, failed = 0, 0
             for row in self.request.form.get('%s.rows' % context.UID(), []):
@@ -40,6 +41,8 @@ class Table(BrowserView):
                     typestool.constructContent(type_name='Row', container=context, id=id)
                     object = context[id]
                     object.update(**dict(row))
+                    if position is not None:
+                        context.moveObjectToPosition(id, int(position)+added)
                     object.reindexObject()
                     added += 1
                 except:

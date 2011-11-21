@@ -132,7 +132,7 @@ class Definition(object):
         columns = self.context.getColumns()
         if columns:
             definition['columns'] = columns
-        definition['columns'] = definitions.parseColumns(definition['columns'])
+        definition['columns'] = definitions.parseColumns(definition.get('columns', ()))
         style = self.context.getStyle()
         if style:
             definition['style'] = style

@@ -71,6 +71,7 @@ table.table-configlet td {
 
 table.table .add-row td {
   vertical-align:top;
+  background-color:&dtml-notifyBackgroundColor;;
 }
 
 table.table .add-row td .wrap {

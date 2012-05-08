@@ -74,6 +74,10 @@
                                    name string:${id}.title:records" />
           </td>
           <td>
+            <input type="hidden" name="definition_columns_id.type:records" value=""
+                   tal:condition="blocked"
+                   tal:attributes="name string:${id}.type:records;
+                                   value column/type;" />
             <select name="definition_columns_id.type:records" size="1"
                     tal:attributes="name string:${id}.type:records;
                                     disabled python:blocked and 'disabled' or '';">

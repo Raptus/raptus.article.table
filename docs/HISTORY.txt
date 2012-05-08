@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0b12 (2012-05-08)
+-------------------
+
+* Found and fixed another bug in configlet where the column type was not stored for table
+  definitions already in use
+
 2.0b11 (2012-05-08)
 -------------------
 

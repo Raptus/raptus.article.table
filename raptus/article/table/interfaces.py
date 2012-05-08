@@ -30,11 +30,11 @@ class IDefinitions(interface.Interface):
         """ Returns a dict of definitions available for this article
         """
     
-    def addDefinition(name, style, columns):
+    def addDefinition(name, style, columns, id=None):
         """ Adds a new global definition
         """
     
-    def removeDefinition(name):
+    def removeDefinition(id):
         """ Removes a global definition
         """
 

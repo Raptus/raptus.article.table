@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b11 (2012-05-08)
+-------------------
+
+* Fixed major bug in configlet where table definitions in use where always deleted when saving
+
 2.0b10 (2011-11-21)
 -------------------
 

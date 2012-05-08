@@ -73,7 +73,7 @@ class Definitions(object):
                 pass
         return definitions
     
-    def addDefinition(self, name, style, columns):
+    def addDefinition(self, name, style, columns, id=None):
         """ Adds a new global definition
         """
         for column in columns:
@@ -81,18 +81,18 @@ class Definitions(object):
         value = dumps({'columns': columns,
                        'style': style,
                        'name': name})
-        name = normalizeString(name, self.context)
-        if self.properties.hasProperty(name):
-            self.properties._updateProperty(name, value)
+        if id is None:
+            id = normalizeString(name, self.context)
+        if self.properties.hasProperty(id):
+            self.properties._updateProperty(id, value)
         else:
-            self.properties._setProperty(name, value)
+            self.properties._setProperty(id, value)
     
-    def removeDefinition(self, name):
+    def removeDefinition(self, id):
         """ Removes a global definition
         """
-        name = normalizeString(name, self.context)
-        if self.properties.hasProperty(name):
-            self.properties._delProperty(name)
+        if self.properties.hasProperty(id):
+            self.properties._delProperty(id)
     
     def parseColumns(self, columns):
         ignore = 1

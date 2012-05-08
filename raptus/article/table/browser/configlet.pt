@@ -47,6 +47,8 @@
                                       repeat_odd repeat/definition/odd;"
                           tal:attributes="class python:repeat_odd and 'odd' or 'even'">
                         <td>
+                          <input type="hidden" name="definitions.id:records" value=""
+                                 tal:attributes="value definition/id" />
                           <input type="hidden" name="definitions.origname:records" value=""
                                  tal:attributes="value definition/name" />
                           <input type="text" name="definitions.name:records" value=""
@@ -76,10 +78,6 @@
                                    name="definitions.delete:records"
                                    value="1"
                                    tal:condition="not: blocked" />
-                            <input type="hidden"
-                                   name="definitions.delete:records"
-                                   value="0"
-                                   tal:condition="blocked" />
                             <span class="discreet"
                                  i18n:translate="already_in_use"
                                  tal:condition="blocked">This definition is already in use.</span>

@@ -33,7 +33,8 @@ class Configlet(BrowserView):
         for name, definition in raw_definitions.iteritems():
             if not len(definition['columns']) or self.request.form.has_key('definition_columns_%s_add_column' % definition['name']):
                 definition['columns'].append({})
-            definition['blocked'] =self.checkBlocked(name)
+            definition['blocked'] = self.checkBlocked(name)
+            definition['id'] = name
             self.definitions.append(definition)
         
         self.new_definition = {
@@ -69,13 +70,13 @@ class Configlet(BrowserView):
                 error = _(u'Unable to parse the columns field of the definition to be added')
         modify = self.request.form.get('definitions', [])[:]
         for definition in modify:
-            if not definition['name'] == definition['origname'] or definition.has_key('delete'):
-                self._definitions.removeDefinition(definition['origname'])
+            if definition.has_key('delete'):
+                self._definitions.removeDefinition(definition['id'])
             if definition.has_key('delete'):
                 continue
             try:
                 columns = self.request.form.get('definition_columns_%s' % definition['origname'], [])
-                self._definitions.addDefinition(definition['name'], definition['style'], self._formatColumns(columns))
+                self._definitions.addDefinition(definition['name'], definition['style'], self._formatColumns(columns), definition['id'])
             except:
                 transaction.abort()
                 error = _(u'Unable to parse the columns field of one of the definitions to be modified')

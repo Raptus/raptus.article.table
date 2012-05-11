@@ -52,8 +52,7 @@
                           <input type="hidden" name="definitions.origname:records" value=""
                                  tal:attributes="value definition/name" />
                           <input type="text" name="definitions.name:records" value=""
-                                 tal:attributes="value definition/name;
-                                                 readonly readonly" /></td>
+                                 tal:attributes="value definition/name" /></td>
                         <td>
                           <select name="definitions.style:records" size="1">
                             <tal:option repeat="style view/styles">

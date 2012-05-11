@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b13 (2012-05-11)
+-------------------
+
+* Allow renaming of existing table definitions which are in use
+
 2.0b12 (2012-05-08)
 -------------------
 

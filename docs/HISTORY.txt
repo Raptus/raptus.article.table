@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0b14 (unreleased)
+-------------------
+
+* Added dependency for simplejson
+
 2.0b13 (2012-05-11)
 -------------------
 

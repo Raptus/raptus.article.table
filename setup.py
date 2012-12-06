@@ -25,6 +25,7 @@ setup(name='raptus.article.table',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'simplejson',
           'archetypes.schemaextender',
           'raptus.article.core',
           # -*- Extra requirements: -*-

@@ -100,7 +100,7 @@ class Table(BrowserView):
     def can_add(self):
         context = aq_inner(self.context)
         mship = getToolByName(context, 'portal_membership')
-        return mship.checkPermission(ADD_PERMISSION['Row'], context)
+        return not self.request.get('raptus_article_viewing', 0) and mship.checkPermission(ADD_PERMISSION['Row'], context)
     
     @property
     @memoize

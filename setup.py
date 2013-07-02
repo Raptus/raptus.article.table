@@ -27,7 +27,7 @@ setup(name='raptus.article.table',
           'setuptools',
           'simplejson',
           'archetypes.schemaextender',
-          'raptus.article.core',
+          'raptus.article.core>2.0b14',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

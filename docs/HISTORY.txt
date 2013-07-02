@@ -4,6 +4,7 @@ Changelog
 2.0b14 (unreleased)
 -------------------
 
+* Adjustments for new raptus.article.core functionality (drag'n'drop and edit components view)
 * Added dependency for simplejson
 
 2.0b13 (2012-05-11)

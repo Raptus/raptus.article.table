@@ -19,6 +19,13 @@
         />
 
     <browser:page
+        for="..interfaces.ITable"
+        name="article_move"
+        class="raptus.article.core.browser.edit.Move"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
         for="Products.CMFCore.interfaces.ISiteRoot"
         name="raptus.article.table.configlet"
         class=".configlet.Configlet"

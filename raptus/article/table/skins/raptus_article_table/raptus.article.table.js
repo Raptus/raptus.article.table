@@ -1,6 +1,7 @@
 (function($) {
   
-  $(document).ready(function() {
+  function init(e) {
+    var container = $(this);
     
     // Table configlet
     var counter = 1;
@@ -15,7 +16,7 @@
       
     }
     
-    $('.table-configlet .table-columns').each(function() {
+    container.find('.table-configlet .table-columns').each(function() {
       var cell = $(this).parent();
       var trigger = $('<a href="javascript://" rel="#columns_'+counter+'"><img src="++resource++table_icon.gif" /></a>');
       if(!title)
@@ -42,7 +43,7 @@
     
     // Columns edit form
     counter = 1;
-    $('.table-columns tbody tr').each(function() {
+    container.find('.table-columns tbody tr').each(function() {
       $(this).attr('id', 'column_'+(counter++));
       var handle = $('<td />')
         .mousedown(function(e) {
@@ -64,9 +65,9 @@
         .html('&#x28ff;');
       $(this).prepend(handle);
     });
-    $('.table-columns thead tr').prepend('<th class="nosort" />');
-    $('.table-columns tfoot tr td').attr('colspan', $('.table-columns tfoot tr td').attr('colspan')+1);
-    $('input[name$="_add_column"][type="submit"]').click(function(e) {
+    container.find('.table-columns thead tr').prepend('<th class="nosort" />');
+    container.find('.table-columns tfoot tr td').attr('colspan', $('.table-columns tfoot tr td').attr('colspan')+1);
+    container.find('input[name$="_add_column"][type="submit"]').click(function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
       var row = $(this).closest('table').find('tbody > tr:last').clone(true);
@@ -78,7 +79,7 @@
     });
     
     // Table edit view
-    $('table.table td.icon:not(.hidden)').each(function() {
+    container.find('table.table td.icon:not(.hidden)').each(function() {
       var format = $(this).parents('table').hasClass('gif') ? 'gif' : 'png';
       if(!$.trim($(this).html()))
         return;
@@ -91,7 +92,7 @@
         $(this).find('.icon-content').fadeOut(200);
       });
     });
-    $('table.table .add-row').each(function() {
+    container.find('table.table .add-row').each(function() {
       var format = $(this).parents('table').hasClass('gif') ? 'gif' : 'png';
       $(this).find('td:not(.hidden) input:not([type=submit]), td:not(.hidden) textarea').each(function() {
         $(this).wrap('<span class="wrap" />');
@@ -126,7 +127,7 @@
         new_row.find('input:first').focus();
       });
     });
-    var rows = $('table.table .manage, table.table thead th:last');
+    var rows = container.find('table.table .manage, table.table thead th:last');
     if(rows.size() > 1) {
       rows.each(function() {
         var format = $(this).closest('table').hasClass('gif') ? 'gif' : 'png';
@@ -160,7 +161,7 @@
         });
       });
     }
-    $('table.table td.hidden').each(function() {
+    container.find('table.table td.hidden').each(function() {
       if(!$.trim($(this).html()))
         return;
       var format = $(this).parents('table').hasClass('gif') ? 'gif' : 'png';
@@ -177,7 +178,12 @@
       }
       hidden.find('table').append('<tr><th>'+$(this).parents('table').find('th.'+$(this).attr('class').match(/column-[^\s]+/)).html()+'</th><td>'+$(this).html()+'</td></tr>');
     }).remove();
-    $('table.table th.hidden').remove();
+    container.find('table.table th.hidden').remove();
+  }
+  
+  $(document).ready(function(e) {
+    $.proxy(init, $('body'))(e);
+    $('.viewletmanager').on('viewlets.updated', init);
   });
   
 })(jQuery);

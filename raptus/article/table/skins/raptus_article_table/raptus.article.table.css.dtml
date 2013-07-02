@@ -16,8 +16,9 @@
 }
 
 table.table td .manage {
-  position:static;
+  position:relative;
   white-space:nowrap;
+  float:right;
 }
 
 table.table td .icon-content {

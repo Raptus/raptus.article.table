@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b13'
+version = '2.0b14.dev0'
 
 setup(name='raptus.article.table',
       version=version,

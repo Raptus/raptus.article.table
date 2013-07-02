@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0b13 (2013-07-02)
+2.0b14 (unreleased)
 -------------------
 
 * Adjustments for new raptus.article.core functionality (drag'n'drop and edit components view)
